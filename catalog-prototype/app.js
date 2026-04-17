@@ -104,7 +104,7 @@ const topCategories = [
 
 const categoryOrder = topCategories.map((category) => category.name);
 const liveSections = categoryOrder.filter((section) => records.some((record) => record.section === section));
-let activeSection = "";
+const activeSections = new Set();
 let searchQuery = "";
 let activeViewMode = "grid-default";
 let filtersOpen = false;
@@ -840,7 +840,7 @@ function renderTopCategories() {
   root.innerHTML = topCategories
     .map((category) => `
       <button
-        class="category-app ${activeSection === category.name ? "is-active" : ""}"
+        class="category-app ${activeSections.has(category.name) ? "is-active" : ""}"
         type="button"
         data-section="${category.name}"
         ${availableSections.has(category.name) ? "" : "disabled"}
@@ -855,11 +855,36 @@ function renderTopCategories() {
       </button>
     `)
     .join("");
+
+  renderSelectedCategoryTray();
+}
+
+function renderSelectedCategoryTray() {
+  const tray = document.getElementById("selected-categories-tray");
+  const list = document.getElementById("selected-categories-list");
+  if (!tray || !list) return;
+
+  const selected = topCategories.filter((category) => activeSections.has(category.name));
+  tray.classList.toggle("is-hidden", selected.length === 0);
+  list.innerHTML = selected
+    .map((category) => `
+      <button
+        class="selected-category-pill"
+        type="button"
+        data-remove-section="${category.name}"
+        aria-label="Remove ${titleCase(category.name)}"
+        title="${titleCase(category.name)}"
+      >
+        <img class="selected-category-pill-image" src="${category.image}" alt="" aria-hidden="true" width="38" height="38" />
+        <span class="selected-category-pill-close">×</span>
+      </button>
+    `)
+    .join("");
 }
 
 function baseRecordsForSection() {
   return records.filter((record) => {
-    const matchesSection = !activeSection || record.section === activeSection;
+    const matchesSection = activeSections.size === 0 || activeSections.has(record.section);
     const matchesQuery = !searchQuery || searchableText(record).includes(searchQuery);
     return matchesSection && matchesQuery;
   });
@@ -978,12 +1003,10 @@ function filterPanelMarkup(baseRecords, groups) {
     return `<div class="catalog-filters-empty">No filters available for this section.</div>`;
   }
 
-  return groups
+  const hasActiveFilters = Object.values(activeFilters).some((selectedValues) => selectedValues.size > 0);
+  const groupsMarkup = groups
     .map((group, groupIndex) => {
-      const defaultExpandedKey = filterGroupsDefaultKey(groups);
-      const isExpanded = expandedFilterGroup
-        ? expandedFilterGroup === group.key
-        : filtersOpen && defaultExpandedKey === group.key;
+      const isExpanded = expandedFilterGroup === group.key;
       const scopedRecords = baseRecords.filter((record) => recordMatchesActiveFilters(record, group.key));
       const optionMarkup = group.options
         .map((option) => {
@@ -1032,6 +1055,16 @@ function filterPanelMarkup(baseRecords, groups) {
     })
     .filter(Boolean)
     .join("");
+
+  return `
+    <div class="catalog-filters-panel-header">
+      <div class="catalog-filters-panel-actions">
+        ${hasActiveFilters ? '<button class="catalog-filters-clear" type="button" data-clear-filters>Clear filters</button>' : ""}
+        <button class="catalog-filters-hide" type="button" data-hide-filters>Hide filters</button>
+      </div>
+    </div>
+    ${groupsMarkup}
+  `;
 }
 
 function filterGroupsDefaultKey(groups) {
@@ -1048,13 +1081,17 @@ function renderUtilityBar(records, groups) {
   if (filterButtonLabel) {
     filterButtonLabel.textContent = filtersOpen ? "Hide Filters" : "Filter";
   }
+  const filterButton = document.querySelector("[data-toolbar-filter]");
+  if (filterButton) {
+    filterButton.setAttribute("aria-expanded", filtersOpen ? "true" : "false");
+    filterButton.classList.toggle("is-active", filtersOpen);
+  }
 
   const panel = document.getElementById("catalog-filters-panel");
   if (panel) {
     panel.classList.toggle("is-hidden", !filtersOpen);
     panel.innerHTML = filtersOpen ? filterPanelMarkup(baseRecordsForSection(), groups) : "";
   }
-
   const sortButton = document.querySelector("[data-toolbar-sort]");
   const sortPanel = document.getElementById("catalog-sort-panel");
   if (sortButton) {
@@ -1193,15 +1230,31 @@ function wireTopCategories() {
     button.addEventListener("click", () => {
       const nextSection = button.dataset.section || "";
       if (!nextSection) return;
-      activeSection = nextSection === activeSection ? "" : nextSection;
+      if (activeSections.has(nextSection)) {
+        activeSections.delete(nextSection);
+      } else {
+        activeSections.add(nextSection);
+      }
       if (filtersOpen) {
         expandedFilterGroup = "";
       }
       renderAll();
-      const root = document.getElementById("catalog-root");
-      if (root) {
-        root.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+    });
+  });
+
+  document.querySelectorAll("[data-remove-section]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const section = button.dataset.removeSection || "";
+      if (!section) return;
+      activeSections.delete(section);
+      renderAll();
+    });
+  });
+
+  document.querySelectorAll("[data-clear-sections]").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeSections.clear();
+      renderAll();
     });
   });
 }
@@ -1212,8 +1265,8 @@ function wireUtilityBar(filterGroups) {
     filterButton.onclick = () => {
       filtersOpen = !filtersOpen;
       sortOpen = false;
-      if (filtersOpen && !expandedFilterGroup && filterGroups[0]) {
-        expandedFilterGroup = filterGroups[0].key;
+      if (filtersOpen) {
+        expandedFilterGroup = "";
       }
       renderAll();
     };
@@ -1252,6 +1305,22 @@ function wireUtilityBar(filterGroups) {
       const value = button.dataset.value || "";
       if (!group || !value) return;
       toggleFilterValue(group, value);
+      renderAll();
+    };
+  });
+
+  document.querySelectorAll("[data-clear-filters]").forEach((button) => {
+    button.onclick = () => {
+      Object.values(activeFilters).forEach((selectedValues) => selectedValues.clear());
+      expandedFilterGroup = "";
+      renderAll();
+    };
+  });
+
+  document.querySelectorAll("[data-hide-filters]").forEach((button) => {
+    button.onclick = () => {
+      filtersOpen = false;
+      expandedFilterGroup = "";
       renderAll();
     };
   });
@@ -1297,8 +1366,23 @@ function wireGlobalDismissals() {
   document.addEventListener("click", (event) => {
     const target = event.target;
     if (!(target instanceof Element)) return;
-    if (sortOpen && !target.closest(".catalog-sort-shell")) {
+    const eventPath = typeof event.composedPath === "function" ? event.composedPath() : [];
+    const clickedInsideFilterUi = eventPath.some((node) => {
+      return node instanceof Element
+        && (node.classList.contains("catalog-toolbar-shell")
+          || node.classList.contains("catalog-filters-panel"));
+    });
+    const clickedInsideSortUi = eventPath.some((node) => {
+      return node instanceof Element && node.classList.contains("catalog-sort-shell");
+    });
+    if (sortOpen && !clickedInsideSortUi) {
       sortOpen = false;
+      renderAll();
+      return;
+    }
+    if (filtersOpen && !clickedInsideFilterUi) {
+      filtersOpen = false;
+      expandedFilterGroup = "";
       renderAll();
     }
   });

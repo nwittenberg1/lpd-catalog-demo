@@ -56,6 +56,13 @@
         <div class="category-app-grid" id="category-app-grid"></div>
       </section>
 
+      <div class="selected-categories-tray is-hidden" id="selected-categories-tray" aria-label="Selected categories">
+        <div class="selected-categories-actions">
+          <button class="selected-categories-clear" type="button" data-clear-sections>Clear all</button>
+        </div>
+        <div class="selected-categories-list" id="selected-categories-list"></div>
+      </div>
+
       <section class="catalog-toolbar-shell">
         <div class="catalog-toolbar" id="catalog-toolbar">
           <div class="catalog-toolbar-group catalog-toolbar-group-left">
@@ -73,7 +80,7 @@
                 id="catalog-search"
                 class="catalog-toolbar-search-input"
                 type="search"
-                placeholder="Search products, SKU, brand, category, or finish"
+                placeholder="Search"
                 aria-label="Search catalog"
               />
             </label>
