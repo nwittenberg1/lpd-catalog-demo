@@ -1,0 +1,19 @@
+.DS_Store
+
+# Local packaging artifacts
+LPD-Catalog-Demo-*.zip
+.portable-demo-staging/
+
+# Local catalog helpers and transient dirs
+catalog-prototype/images-source
+
+# Large local source folders not needed for the hosted demo
+NEW CATALOG Folder/
+stringed-local-idml/
+
+# Photoshop working file
+CONSISTENT IMG SIZE TEMPLATE.psd
+
+# Python cache
+__pycache__/
+*.pyc

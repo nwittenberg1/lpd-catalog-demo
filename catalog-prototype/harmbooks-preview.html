@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harmonicas & Books Preview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Jost:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand-lockup" href="./index.html" aria-label="Go to catalog home">
+          <img class="brand-logo" src="/Users/lpdmusic/Library/CloudStorage/Dropbox/LOGO/BRAND GUIDELINES/WEB/PNG/LPD LOGO-03.png" alt="LPD Music" />
+        </a>
+        <nav class="topbar-links" aria-label="Preview sections">
+          <a href="./index.html">Catalog</a>
+          <a href="/Users/lpdmusic/Documents/New project/NEW CATALOG Folder/PDFs/4:7/Harmonica & Novelties.pdf">Section PDF</a>
+          <a href="/Users/lpdmusic/Documents/New project/harmbooks-normalized-sample/manifest.csv">Manifest</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">Section Preview</p>
+          <h1>Harmonicas & Books Image Check</h1>
+          <p class="lede">
+            These are the normalized 2048 x 2048 exports generated from the local
+            harmonicas/books package so you can verify the framing directly in the site.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <p class="kicker">Normalized Output</p>
+          <h2>Review image fit before we scale this workflow</h2>
+        </div>
+        <div id="harmbooks-preview-grid" class="harmbooks-preview-grid"></div>
+      </section>
+    </main>
+
+    <script src="./data/harmbooks-preview-data.js"></script>
+    <script src="./harmbooks-preview.js"></script>
+  </body>
+</html>

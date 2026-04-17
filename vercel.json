@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/catalog-prototype/index.html",
+      "permanent": false
+    }
+  ]
+}

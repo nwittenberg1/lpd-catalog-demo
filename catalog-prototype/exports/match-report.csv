@@ -1,0 +1,45 @@
+SKU,Product Name,Category,Match Type,Finish Count,Matched Files
+D56U2-BLK,‘56 U2,Electric Guitars,exact-phrase,1,Danelectro ‘56 U2.png
+D57,‘57,Electric Guitars,exact-phrase,2,Danelectro ‘57 Black.png | Danelectro ‘57 Green.png
+STOCK 59,Stock ‘59,Electric Guitars,exact-phrase,5,Danelectro Stock ‘59 Aqua.png | Danelectro Stock ‘59 Black.png | Danelectro Stock ‘59 Cream.png | Danelectro Stock ‘59 Red.png | Danelectro Stock ‘59 Vintage Aqua.png
+GLITTER59,GLITTER ‘59,Electric Guitars,exact-phrase,3,Danelectro Glitter ‘59 Black.png | Danelectro Glitter ‘59 Maroon.png | Danelectro Glitter ‘59 Red.png
+D59M-PLUS-MF,59M NOS+ METALFLAKE,Electric Guitars,token-fallback,4,Danelectro 59M NOS+ Silver Metalflake.png | Danelectro 59M NOS+ Red Metalflake.png | Danelectro 59M NOS+ Orange Metalflake.png | Danelectro 59M NOS+ Blue Metalflake.png
+D59M-PLUS-LFT,‘59M NOS+ Lefty,Electric Guitars,exact-phrase,2,Danelectro ‘59M NOS+ Lefty Black.png | Danelectro ‘59M NOS+ Lefty Seafoam Green.png
+Triple DIVINE,Triple Divine,Electric Guitars,exact-phrase,2,Danelectro Triple Divine Burgundy.png | Danelectro Triple Divine Red.png
+D59DIVINE,‘59 DIVINE,Electric Guitars,exact-phrase,3,Danelectro ‘59 DIVINE Dark Walnut.png | Danelectro ‘59 DIVINE Flame Maple.png | Danelectro ‘59 DIVINE Fresh Cream.png
+BO59-MF,blackout ‘59,Electric Guitars,exact-phrase,3,Danelectro Blackout ‘59 Black Metalflake.png | Danelectro Blackout ‘59 Green Metalflake.png | Danelectro Blackout ‘59 Purple Metalflake.png
+D59m-plus,‘59M NOS+,Electric Guitars,exact-phrase,13,Danelectro 59M NOS+ Blue Metalflake.png | Danelectro 59M NOS+ Orange Metalflake.png | Danelectro 59M NOS+ Red Metalflake.png | Danelectro 59M NOS+ Silver Metalflake.png | Danelectro ‘59M NOS+ Baby Blue.png | Danelectro ‘59M NOS+ Black.png | Danelectro ‘59M NOS+ Copper.png | Danelectro ‘59M NOS+ GoGo Blue.png | Danelectro ‘59M NOS+ Ice Grey.png | Danelectro ‘59M NOS+ Keen Green.png | Danelectro ‘59M NOS+ Lefty Black.png | Danelectro ‘59M NOS+ Lefty Seafoam Green.png | Danelectro ‘59M NOS+ Red.png
+BO59-GRN,blackout ‘59,Electric Guitars,exact-phrase,3,Danelectro Blackout ‘59 Black Metalflake.png | Danelectro Blackout ‘59 Green Metalflake.png | Danelectro Blackout ‘59 Purple Metalflake.png
+D59R,FIFTY NINER,Electric Guitars,exact-phrase,3,Danelectro Fifty Niner Gold.png | Danelectro Fifty Niner Jade.png | Danelectro Fifty Niner Red.png
+59XT,‘59XT,Electric Guitars,exact-phrase,4,Danelectro ‘59XT Aqua.png | Danelectro ‘59XT Black.png | Danelectro ‘59XT Burgundy.png | Danelectro ‘59XT Silver.png
+DPBS,PB Special,Electric Guitars,exact-phrase,3,Danelectro PB Special Black.png | Danelectro PB Special Burgundy.png | Danelectro PB Special White.png
+64XT,64XT,Electric Guitars,exact-phrase,1,Danelectro 64XT Aqua.png
+DLHGUITAR-CPR,Longhorn Guitar,Electric Guitars,exact-phrase,1,Danelectro Longhorn Guitar Copperburst.png
+D67,‘67 DANO,Electric Guitars,exact-phrase,4,Danelectro ‘67 Dano Aqua.png | Danelectro ‘67 Dano Black.png | Danelectro ‘67 Dano Red.png | Danelectro ‘67 Dano Yellow.png
+DPRO,Pro Semi-hollow Electric Guitar,Electric Guitars,exact-phrase,1,Danelectro Pro Semi-hollow Electric Guitar Maroon with Glitter.png
+CONV,convertible,Electric Guitars,exact-phrase,3,Danelectro Convertible Black.png | Danelectro Convertible Cream.png | Danelectro Convertible Tobacco Sunburst.png
+D59RESO,‘59 Resonator,Specialty Guitars,exact-phrase,2,Danelectro ‘59 Resonator Black.png | Danelectro ‘59 Resonator Tobacco Sunburst.png
+12SDC,12SDC 12-String,Specialty Guitars,exact-phrase,3,Danelectro 12SDC 12 String Aqua.png | Danelectro 12SDC 12 String Black.png | Danelectro 12SDC 12 String Vintage White.png
+D59X12,‘59x 12 string,Specialty Guitars,exact-phrase,6,Danelectro ‘59x 12 String Black Metalflake.png | Danelectro ‘59x 12 String Black.png | Danelectro ‘59x 12 String Blood Red.png | Danelectro ‘59x 12 String Ice Grey.png | Danelectro ‘59x 12 String Red Burst.png | Danelectro ‘59x 12 String Vintage Cream.png
+59R12ST,Fifty Niner™ 12 string,Specialty Guitars,exact-phrase,2,Danelectro Fifty Niner 12 String Black.png | Danelectro Fifty Niner 12 String Gold.png
+D59V12,VINTAGE 12 STRING,Specialty Guitars,exact-phrase,4,Danelectro Vintage 12 String Aqua.png | Danelectro Vintage 12 String Black.png | Danelectro Vintage 12 String Red.png | Danelectro Vintage 12 String Vintage White.png
+DBN612,Doubleneck 6/12,Specialty Guitars,exact-phrase,2,Danelectro Doubleneck 6:12 Red Crackle.png | Danelectro Doubleneck 6:12 White.png
+D56BAR,‘56 Baritone ELECTRIC GUITAR,Specialty Guitars,exact-phrase,6,Danelectro ‘56 Baritone Black Metalflake.png | Danelectro ‘56 Baritone Black.png | Danelectro ‘56 Baritone Lefty Black.png | Danelectro ‘56 Baritone Red Burst.png | Danelectro ‘56 Baritone Red.png | Danelectro ‘56 Baritone Silver Metalflake.png
+D56BAR,‘56 Baritone ELECTRIC GUITAR Metalflake,Specialty Guitars,token-fallback,2,Danelectro ‘56 Baritone Silver Metalflake.png | Danelectro ‘56 Baritone Black Metalflake.png
+D56BARLFTY-BLK,‘56 Baritone LEFTY,Specialty Guitars,exact-phrase,1,Danelectro ‘56 Baritone Lefty Black.png
+D56VBAR,‘56 Vintage Baritone,Specialty Guitars,exact-phrase,4,Danelectro ‘56 Vintage Baritone Aqua.png | Danelectro ‘56 Vintage Baritone Black.png | Danelectro ‘56 Vintage Baritone Metallic Red.png | Danelectro ‘56 Vintage Baritone Vintage White.png
+LHBARI,Longhorn Baritone,Specialty Guitars,exact-phrase,2,Danelectro Longhorn Baritone Blackburst.png | Danelectro Longhorn Baritone Copperburst.png
+66BT,‘66 Baritone,Specialty Guitars,exact-phrase,1,Danelectro ‘66 Baritone Transparent Blue.png
+D59RBAR,Fifty Niner Baritone,Specialty Guitars,exact-phrase,2,Danelectro Fifty Niner Baritone Black.png | Danelectro Fifty Niner Baritone Jade.png
+D56BAR-MF,‘56 Bari ELECTRIC GUITAR,Specialty Guitars,exact-phrase,8,Danelectro ‘56 Bari Blue Metalflake.png | Danelectro ‘56 Bari Red Metalflake.png | Danelectro ‘56 Baritone Black Metalflake.png | Danelectro ‘56 Baritone Black.png | Danelectro ‘56 Baritone Lefty Black.png | Danelectro ‘56 Baritone Red Burst.png | Danelectro ‘56 Baritone Red.png | Danelectro ‘56 Baritone Silver Metalflake.png
+COSITAR,Coral Sitar,Specialty Guitars,exact-phrase,5,Danelectro Coral Sitar Black Crackle.png | Danelectro Coral Sitar Blue Metalflake.png | Danelectro Coral Sitar Red Crackle.png | Danelectro Coral Sitar Red Metalflake.png | Danelectro Coral Sitar White Crackle.png
+DBSITAR,Baby Sitar,Specialty Guitars,exact-phrase,3,Danelectro Baby Sitar Aqua.png | Danelectro Baby Sitar Red Crackle.png | Danelectro Baby Sitar Sunburst.png
+DCORSITAR-bluMF,Coral Sitar Blue Metalflake,Specialty Guitars,exact-phrase,1,Danelectro Coral Sitar Blue Metalflake.png
+DCORSITAR-REDMF,Coral Sitar Red Metalflake,Specialty Guitars,exact-phrase,1,Danelectro Coral Sitar Red Metalflake.png
+D56BASS-BLK,‘56 SINGLE CUT BASS,Bass Guitars,exact-phrase,1,Danelectro ‘56 Single Cut Bass Black.png
+59SSB,‘59 DC Short SCALE BASS,Bass Guitars,exact-phrase,3,Danelectro ‘59 DC Short Scale Bass Black Metalflake.png | Danelectro ‘59 DC Short Scale Bass Copper.png | Danelectro ‘59 DC Short Scale Bass Cream.png
+D59DCBASS,‘59 DC LONG SCALE BASS,Bass Guitars,exact-phrase,2,Danelectro ‘59 DC Long Scale Bass Black.png | Danelectro ‘59 DC Long Scale Bass Copperburst.png
+59RSSB-JADE,Fifty niner™ bass,Bass Guitars,exact-phrase,1,Danelectro Fifty Niner Bass Jade.png
+DLHBASS,LONGHORN BASS,Bass Guitars,exact-phrase,3,Danelectro Longhorn Bass Black.png | Danelectro Longhorn Bass Copperburst.png | Danelectro Longhorn Bass Lefty Copperburst.png
+D58LHBLFT,Longhorn Bass LEfty,Bass Guitars,exact-phrase,1,Danelectro Longhorn Bass Lefty Copperburst.png
+D58LHB,Longhorn Semi-hollow bass,Bass Guitars,exact-phrase,4,Danelectro Longhorn Semi-Hollow Bass Jade.png | Danelectro Longhorn Semi-Hollow Bass Moonlight Delight.png | Danelectro Longhorn Semi-Hollow Bass Red.png | Danelectro Longhorn Semi-Hollow Bass White.png

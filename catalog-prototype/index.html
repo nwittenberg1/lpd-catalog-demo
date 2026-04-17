@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2026 LPD Music Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Jost:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand-lockup" href="./index.html" aria-label="Go to catalog home">
+          <img class="brand-logo" src="./assets/logo/lpd-logo-03.png" alt="LPD Music" />
+        </a>
+        <nav class="topbar-links" aria-label="Catalog sections">
+          <a href="#category-nav">Browse</a>
+          <a href="#catalog-root">Products</a>
+          <a href="./exports/finishes.csv">Finishes CSV</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">Dealer Catalog</p>
+          <h1>2026 LPD Music Catalog</h1>
+          <p class="lede">
+            Browse dealer-ready products across fretted instruments and harmonicas,
+            books, and novelties with pricing, images, and detail pages organized for
+            fast account review.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#catalog-root">See Product Grid</a>
+            <a class="secondary-action" href="./exports/products.csv">Open Product Export</a>
+          </div>
+          <div class="hero-notes">
+            <span>Dealer pricing</span>
+            <span>Finish options</span>
+            <span>Fast product lookup</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="category-nav-panel" id="category-nav">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="kicker">Departments</p>
+            <h2>Browse By Category</h2>
+          </div>
+        </div>
+        <div class="category-app-grid" id="category-app-grid"></div>
+      </section>
+
+      <section class="catalog-toolbar-shell">
+        <div class="catalog-toolbar" id="catalog-toolbar">
+          <div class="catalog-toolbar-group catalog-toolbar-group-left">
+            <button class="catalog-toolbar-button" type="button" data-toolbar-filter>
+              <span class="catalog-toolbar-icon-wrap">
+                <img class="catalog-toolbar-icon" src="./assets/icons/filter.svg" alt="" aria-hidden="true" />
+              </span>
+              <span class="catalog-toolbar-label" id="catalog-filter-button-label">Filter</span>
+            </button>
+            <label class="catalog-toolbar-search" for="catalog-search">
+              <span class="catalog-toolbar-icon-wrap">
+                <img class="catalog-toolbar-icon" src="./assets/icons/search.svg" alt="" aria-hidden="true" />
+              </span>
+              <input
+                id="catalog-search"
+                class="catalog-toolbar-search-input"
+                type="search"
+                placeholder="Search products, SKU, brand, category, or finish"
+                aria-label="Search catalog"
+              />
+            </label>
+          </div>
+
+          <div class="catalog-toolbar-group catalog-toolbar-group-right">
+            <div class="catalog-sort-shell">
+              <button class="catalog-toolbar-button catalog-sort-button" type="button" data-toolbar-sort aria-expanded="false">
+                <span class="catalog-toolbar-label">Sort by</span>
+                <span class="catalog-toolbar-icon-wrap catalog-sort-chevron-wrap">
+                  <img class="catalog-toolbar-icon catalog-sort-chevron" src="./assets/icons/chevron-down.svg" alt="" aria-hidden="true" />
+                </span>
+              </button>
+              <div class="catalog-sort-panel is-hidden" id="catalog-sort-panel"></div>
+            </div>
+
+            <div class="catalog-toolbar-view-group" aria-label="View options">
+              <span class="catalog-toolbar-label">View</span>
+              <div class="catalog-toolbar-view-buttons">
+                <button class="catalog-toolbar-icon-button is-active" type="button" data-view-mode="grid-default" aria-label="Default grid view">
+                  <img class="catalog-toolbar-icon" src="./assets/icons/view-grid-default.svg" alt="" aria-hidden="true" />
+                </button>
+                <button class="catalog-toolbar-icon-button" type="button" data-view-mode="grid-4" aria-label="Four-column grid view">
+                  <img class="catalog-toolbar-icon" src="./assets/icons/view-grid-4.svg" alt="" aria-hidden="true" />
+                </button>
+                <button class="catalog-toolbar-icon-button" type="button" data-view-mode="list" aria-label="List view">
+                  <img class="catalog-toolbar-icon" src="./assets/icons/view-list.svg" alt="" aria-hidden="true" />
+                </button>
+              </div>
+            </div>
+
+            <div class="catalog-toolbar-results"><strong id="catalog-results-count">0</strong> Results</div>
+
+            <div class="catalog-toolbar-selection-group" aria-label="Dealer export tools">
+              <button class="catalog-toolbar-button is-secondary" type="button" data-selection-mode>
+                <span class="catalog-toolbar-label" id="catalog-selection-mode-label">Build Dealer List</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="catalog-filters-panel is-hidden" id="catalog-filters-panel"></div>
+      </section>
+
+      <section class="panel">
+        <div id="catalog-root" class="catalog-root"></div>
+      </section>
+    </main>
+
+    <div class="dealer-list-bar is-hidden" id="dealer-list-bar" aria-label="Dealer list actions">
+      <div class="dealer-list-bar-inner">
+        <button class="dealer-list-action dealer-list-action-secondary" type="button" data-selection-clear>
+          Clear
+        </button>
+        <button class="dealer-list-action dealer-list-action-primary" type="button" data-selection-export disabled>
+          <span id="dealer-list-export-label">Export 0 SKUs</span>
+        </button>
+      </div>
+    </div>
+
+    <script src="./data/catalog-products.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
