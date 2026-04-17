@@ -24,6 +24,16 @@ function absoluteFileUrl(path) {
   return `file://${encodePathPreservingSlashes(value)}`;
 }
 
+function resolvedAssetUrl(url) {
+  const value = String(url || "").trim();
+  if (!value) return "";
+  try {
+    return new URL(value, window.location.href).href;
+  } catch (_error) {
+    return value;
+  }
+}
+
 function normalizeVariant(variant) {
   return {
     ...variant,
@@ -433,7 +443,7 @@ async function fetchImageBlob(asset) {
   };
 
   const tryFetch = async (url) => {
-    const response = await fetch(url);
+    const response = await fetch(resolvedAssetUrl(url));
     if (!response.ok) {
       throw new Error(`Unable to fetch ${url}`);
     }
@@ -469,7 +479,7 @@ async function fetchImageBlob(asset) {
       }, mimeType);
     };
     img.onerror = () => reject(new Error(`Unable to load ${src}`));
-    img.src = src;
+    img.src = resolvedAssetUrl(src);
   });
 
   const candidates = Array.from(new Set([
@@ -544,10 +554,27 @@ async function exportSelectedProductsCsv() {
     try {
       const zip = new window.JSZip();
       zip.file(`dealer-list-${stamp}.csv`, csvText);
+      const skippedAssets = [];
 
       for (const asset of dedupedAssets) {
-        const blob = await fetchImageBlob(asset);
-        zip.file(`Images/${asset.fileName}`, blob);
+        try {
+          const blob = await fetchImageBlob(asset);
+          zip.file(`Images/${asset.fileName}`, blob);
+        } catch (error) {
+          skippedAssets.push({
+            fileName: asset.fileName,
+            reason: error?.message || "Image export failed",
+          });
+        }
+      }
+
+      if (skippedAssets.length) {
+        const reportLines = [
+          "Some selected images could not be added to this export.",
+          "",
+          ...skippedAssets.map((item) => `${item.fileName}: ${item.reason}`),
+        ];
+        zip.file("image-export-issues.txt", reportLines.join("\n"));
       }
 
       const blob = await zip.generateAsync({ type: "blob", compression: "DEFLATE" });
