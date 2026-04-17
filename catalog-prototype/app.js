@@ -540,28 +540,17 @@ async function exportSelectedProductsCsv() {
     .filter((asset) => asset.imageUrl || asset.sourceImageUrl);
   const dedupedAssets = Array.from(new Map(assets.map((asset) => [`${asset.fileName}::${asset.sourceImageUrl || asset.imageUrl}`, asset])).values());
 
-  if (/^https?:$/i.test(window.location.protocol)) {
+  if (window.JSZip) {
     try {
-      const response = await fetch("/api/export-dealer-list", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          stamp,
-          csvText,
-          fileName: `dealer-list-${stamp}.csv`,
-          assets: dedupedAssets.map((asset) => ({
-            fileName: asset.fileName,
-            imageUrl: asset.imageUrl || "",
-            sourceImageUrl: asset.sourceImageUrl || "",
-          })),
-        }),
-      });
-      if (!response.ok) {
-        throw new Error("Zip export failed");
+      const zip = new window.JSZip();
+      zip.file(`dealer-list-${stamp}.csv`, csvText);
+
+      for (const asset of dedupedAssets) {
+        const blob = await fetchImageBlob(asset);
+        zip.file(`Images/${asset.fileName}`, blob);
       }
-      const blob = await response.blob();
+
+      const blob = await zip.generateAsync({ type: "blob", compression: "DEFLATE" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
@@ -572,7 +561,7 @@ async function exportSelectedProductsCsv() {
       URL.revokeObjectURL(url);
       return;
     } catch (error) {
-      console.warn("Zip export unavailable, falling back to direct download", error);
+      console.warn("Zip export unavailable, falling back to direct CSV download", error);
     }
   }
 
