@@ -2,8 +2,5 @@
   "name": "lpd-catalog-demo",
   "private": true,
   "version": "1.0.0",
-  "description": "LPD dealer catalog demo for Vercel + GitHub deployment",
-  "dependencies": {
-    "jszip": "^3.10.1"
-  }
+  "description": "LPD dealer catalog demo for Vercel + GitHub deployment"
 }
